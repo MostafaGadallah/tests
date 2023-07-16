@@ -12,14 +12,15 @@ class linkedlist{
 }
 $i=1;
 function add($val){
+    // $i=i;
     $index=(int) $GLOBALS["i"]++;
     $cn="cn".$index;
-    $bn="cn".$index-1;
+    // $bn="cn".$index-1;
     global $$cn;
-    global $$bn;
+    // global $$bn;
     $$cn=new linkedlist($val);
     if($index>1){
-        $GLOBALS[$bn]->next=$$cn;
+        $GLOBALS["cn".$index-1]->next=$$cn;
     }
     return $$cn;
 }
@@ -39,15 +40,15 @@ class unitTest extends PHPUnit\Framework\TestCase {
         $cn1=add("0");
         $cn2=add("2");
         $mylist->head=$cn1;
-        $mylist=[];
+        // $mylist=[];
         for($i=0;$i<260000;$i++){
-            array_unshift($mylist,"1");
-            mid_add("cn1","1");
+            // array_unshift($mylist,"1");
+            add("1",$i);
         }
         $this->assertSame(1,1);
         // var_dump($mylist);
     }
 }
 echo "<pre>";
-$test=new unitTest;
-$test->testcase();
+// $test=new unitTest;
+// $test->testcase();
